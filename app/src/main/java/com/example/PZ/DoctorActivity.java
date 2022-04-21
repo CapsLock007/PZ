@@ -2,6 +2,7 @@ package com.example.PZ;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -37,8 +38,9 @@ public class DoctorActivity  extends AppCompatActivity {
         Intent k = getIntent();
         final String imie = k.getExtras().getString("imie");
         final String nazwisko = k.getExtras().getString("nazwisko");
-
+        final String string = k.getStringExtra("message");
         profil = findViewById(R.id.profil);
+        SignOutBtn = findViewById(R.id.signOutBtn);
 
         profil.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +53,27 @@ public class DoctorActivity  extends AppCompatActivity {
                 builder1.show();
             }
         });
-
+        SignOutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder2 = new AlertDialog.Builder(DoctorActivity.this);
+                builder2.setTitle("Czy na pewno chcesz się wylogować?");
+                builder2.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent(DoctorActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                });
+                builder2.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+                AlertDialog alertDialog = builder2.create();
+                alertDialog.show();
+            }
+        });
     }
 }
