@@ -45,7 +45,14 @@ public class ClientActivity  extends AppCompatActivity {
         wyloguj = findViewById(R.id.signOutBtn);
         kalendarz = findViewById(R.id.kalendarz);
 
+        kalendarz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ClientActivity.this, Kalendarz.class);
+                startActivity(intent);
 
+            }
+        });
 
         wizyta.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -30,6 +30,7 @@ public class DoctorActivity  extends AppCompatActivity {
     Button SignOutBtn;
     Button searchPatBtn;
     Button profil;
+    Button kalendarz;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,15 @@ public class DoctorActivity  extends AppCompatActivity {
         final String string = k.getStringExtra("message");
         profil = findViewById(R.id.profil);
         SignOutBtn = findViewById(R.id.signOutBtn);
+        kalendarz = findViewById(R.id.kalendarz);
+
+        kalendarz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DoctorActivity.this, Kalendarz.class);
+                startActivity(intent);
+            }
+        });
 
         profil.setOnClickListener(new View.OnClickListener() {
             @Override
